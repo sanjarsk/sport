@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}about_game{% endblock %}
+{% block content %}
+    <div class="container">
+        <h3>{{ game.name }}</h3>
+        Дата окончания регистрации:<p>{{ game.register_date }}</p>
+        Начало:<p>{{ game.date_start }}</p>
+        Конец:<p>{{ game.date_finish }}</p>
+        Место проведения: <p>{{ game.place }}</p>
+        <p>{{ game.description }}</p>
+        Виды спорта:
+        <p>
+            {% for sport in sports %}
+                {{ sport.name }}<br>
+            {% endfor %}
+        </p>
+
+    </div>
+
+{% endblock %}

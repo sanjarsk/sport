@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+    <div class="container">
+      {% for i in active_games %}
+        <a href="/{{i.id}}"><h1>{{ i.name }}</h1></a>
+          <p>{{ i.description }}</p>
+          {% if user.is_authenticated %}
+            <a href="{% url 'team_register' %}" class="btn btn-default">Катталуу</a>
+          {% endif %}
+      {% endfor %}
+    </div>
+
+{% endblock %}
