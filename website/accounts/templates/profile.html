@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}login{% endblock %}
+{% block content %}
+    <div class="container">
+        <form action="/accounts/register/" method="post">{% csrf_token %}
+          <h2>{{ user.get_full_name }}</h2>
+<ul>
+            <li>Username: {{ user.username }}</li>
+            <li>Email: {{ user.email }}</li>
+            <li>Name: {{ user.first_name }}</li>
+            <li>Surname: {{ user.last_name }}</li>
+            <li>Faculty: {{ user.profile.faculty }}</li>
+</ul>
+            <button name="submit">register</button>
+        </form>
+
+    </div>
+{% endblock %}
+<form method="post">
+  {% csrf_token %}
+  {{ user_form.as_p }}
+  {{ profile_form.as_p }}
+  <button type="submit">Save changes</button>
+</form>
