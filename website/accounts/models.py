@@ -9,15 +9,16 @@ class User(AbstractBaseUser):
     email = models.EmailField(max_length=254, unique=True)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
-    faculty = models.ForeignKey(Faculty, blank=True)
+    faculty = models.ForeignKey(Faculty, null=True, blank=True)
     is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
     phone_number = models.CharField(max_length=20)
     # needed for AbstractBaseUser model
 
-    objects = UserManager() # manager for user - to-do
+    objects = UserManager() # manager for user
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name', 'last_name']
+    REQUIRED_FIELDS = []
     # список имен полей, которые будут запрашиваться при 
     # создании пользователя с помощью команды управления createsuperuser
 
@@ -43,3 +44,14 @@ class User(AbstractBaseUser):
         Sends an email to this User.
         '''
         send_mail(subject, message, from_email, [self.email], **kwargs)
+
+
+    def has_perm(self, perm, obj=None):
+        "Does the user have a specific permission?"
+        # Simplest possible answer: Yes, always
+        return True
+
+    def has_module_perms(self, app_label):
+        "Does the user have permissions to view the app `app_label`?"
+        # Simplest possible answer: Yes, always
+        return True
