@@ -1,9 +1,6 @@
-{% extends 'base.html' %}
-{% block title %}Success{% endblock %}
+{% extends "base.html" %}
+{% load i18n %}
+
 {% block content %}
-    <div class="container">
-        <h2>
-            Successfull registration!
-        </h2>
-    </div>
+<p>{% trans "You are now registered. Activation email sent." %}</p>
 {% endblock %}

@@ -1,4 +1,1 @@
-{{ user }}
-{{ site }}
-{{ activation_key }}
-{{ expiration_days }}
+{% load i18n %}{% trans "Account activation on" %} {{ site.name }}
