@@ -18,17 +18,17 @@ from django.contrib import admin
 from registration.backends.hmac.views import RegistrationView
 from accounts.forms import CustomUserForm
 
-import accounts.urls
+# import accounts.urls
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
     url(r'^accounts/register/$',
         RegistrationView.as_view(
         form_class=CustomUserForm
         ),
         name='registration_register',
         ),
-    url(r'^accounts/', include('accounts.urls')),
-    url(r'^accounts/', include('registration.backends.hmac.urls', namespace='account'), ),
+    # url(r'^accounts/', include('accounts.urls')),
+    url(r'^accounts/', include('registration.backends.hmac.urls'), ),
     url(r'^', include('main_app.urls')),
+    url(r'^admin/', admin.site.urls),
 ]

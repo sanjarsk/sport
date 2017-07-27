@@ -127,3 +127,17 @@ AUTH_USER_MODEL = 'accounts.User'
 ACCOUNT_ACTIVATION_DAYS = 7
 
 REGISTRATION_OPEN = True
+
+# Mailing
+# EMAIL_HOST = ''
+# EMAIL_HOST_USER = ''
+# EMAIL_HOST_PASSWORD = ''
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+
+# only for development, not for production
+# it writes email to the console where server is running: './manage.py runserver' console
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# production django smtp server
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
