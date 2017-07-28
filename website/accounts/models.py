@@ -23,6 +23,9 @@ class User(AbstractBaseUser):
     # список имен полей, которые будут запрашиваться при 
     # создании пользователя с помощью команды управления createsuperuser
 
+    def __str__(self):
+        return '{} {}'.format(self.first_name, self.last_name)
+
     class Meta:
         verbose_name = "captain"
         verbose_name_plural = "captains"
