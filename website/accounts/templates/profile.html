@@ -5,13 +5,12 @@
         <form action="/accounts/register/" method="post">{% csrf_token %}
           <h2>{{ user.get_full_name }}</h2>
 <ul>
-            <li>Username: {{ user.username }}</li>
             <li>Email: {{ user.email }}</li>
             <li>Name: {{ user.first_name }}</li>
             <li>Surname: {{ user.last_name }}</li>
-            <li>Faculty: {{ user.profile.faculty }}</li>
+            <li>Faculty: {{ user.faculty }}</li>
+            <li>Phone: {{ user.phone_number }}</li>
 </ul>
-            <button name="submit">register</button>
         </form>
 
     </div>

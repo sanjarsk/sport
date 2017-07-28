@@ -69,7 +69,9 @@
            <li class="dropdown">
              <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ user }} <b class="caret"></b></a>
              <ul class="dropdown-menu">
-               <li><a href="/profile/">profile</a></li>
+               <li><a href="{% url 'profile' %}">profile</a></li><hr>
+               <li><a href="{% url 'update_profile' %}">настройки</a></li>
+              
                <li><a href="/accounts/logout">logout</a></li>
              </ul>
           </li>
@@ -79,7 +81,7 @@
                     <a href="/accounts/register/" >sign up</a>
                     </li>
                     <li>
-                         <a href="/accounts/login" >log in</a>
+                         <a href="/accounts/login/" >log in</a>
                     </li>
                 {% endif %}
             </ul>
@@ -89,12 +91,13 @@
       </div> <!-- /container -->
 
     <div id="content">
+
       {% block content %}
       {% endblock %}
 
     <div class="navbar navbar-inverse navbar-fixed-bottom">
         <div class="container">
-            <p class="navbar-text pull-left">© 2017 - manas@edu.kg</p>
+            <p class="navbar-text pull-left">© 2017 - Unique Technologies</p>
         </div>
     </div>
 

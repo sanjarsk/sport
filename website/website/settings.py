@@ -138,6 +138,7 @@ REGISTRATION_OPEN = True
 # only for development, not for production
 # it writes email to the console where server is running: './manage.py runserver' console
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025
 # production django smtp server
 #EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
