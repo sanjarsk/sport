@@ -1,7 +1,7 @@
 import datetime
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.forms.formsets import formset_factory
+from django.forms.models import modelformset_factory
 
 from .models import Active_game
 from .forms import ParticipantForm
@@ -19,7 +19,7 @@ def show_active_game(request, id):
 
 @login_required
 def create_team(request):
-    ParticipantFormSet = formset_factory(ParticipantForm, extra=6)
+    ParticipantFormSet = modelformset_factory(Participant, form=ParticipantForm, extra=6, max_num=17)
 
     if request.method == "POST":
         formset = ParticipantFormSet(request.POST)
@@ -29,4 +29,4 @@ def create_team(request):
     else:
         formset = ParticipantFormSet()
 
-    return render(request, "participant_form.html", {"Formset": formset})
+    return render(request, "participant_form.html", {"formset": formset})
