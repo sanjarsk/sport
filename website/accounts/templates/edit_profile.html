@@ -4,7 +4,7 @@
 {% block content %}
 
     <div class="container">
-        <form  method="POST"  >
+        <form  method="POST" >
             {% csrf_token %}
             {{ user_form.as_p}}
             <button type="submit">ок</button>
