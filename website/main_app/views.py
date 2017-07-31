@@ -5,7 +5,7 @@ from django.views.generic.edit import CreateView
 
 from .models import Active_game
 from .forms import ParticipantForm
-from .models import Participant
+from .models import Participant, Sport
 
 def to_home(request):
     ag = Active_game.objects.filter(date_finish__gte=datetime.datetime.now())
@@ -20,3 +20,6 @@ def show_active_game(request, id):
 class ParticipantCreate(CreateView):
     form_class = ParticipantForm
     template_name = "participant_form.html"
+
+
+

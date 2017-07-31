@@ -7,9 +7,9 @@
         <form  method="POST"  >
             {% csrf_token %}
             {{ user_form.as_p}}
-            {{ profile_form.as_p }}
             <button type="submit">ок</button>
             <input type="button" onclick="history.back();" value="отмена"/>
+            
         </form><br>
 
 

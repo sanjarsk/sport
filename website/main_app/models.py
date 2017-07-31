@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.conf import settings
 
+
 class Sport(models.Model):
     name = models.CharField(max_length = 55)
 
@@ -40,7 +41,7 @@ class Faculty(models.Model):
 class Participant(models.Model):
     name = models.CharField(max_length=30, blank=False, null=False)
     surname = models.CharField(max_length=30, blank=False, null=False)
-    profile_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="Captain")
+    captain = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="Captain")
     phone = models.CharField(max_length=20, blank=True, null=True)
     student_number = models.CharField(max_length=20, blank=False, null=False)
     year = models.CharField(max_length=1, blank=True, null=True)

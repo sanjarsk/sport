@@ -21,11 +21,7 @@ from accounts.forms import CustomUserForm
 import accounts.urls
 
 urlpatterns = [
-    url(r'^accounts/register/$',
-        RegistrationView.as_view(
-        form_class=CustomUserForm
-        ),
-        name='registration_register',
+    url(r'^accounts/register/$',RegistrationView.as_view(form_class=CustomUserForm),name='registration_register',
         ),
     url(r'^accounts/', include('accounts.urls')),
     url(r'^accounts/', include('registration.backends.hmac.urls'), ),

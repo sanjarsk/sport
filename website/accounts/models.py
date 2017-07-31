@@ -20,7 +20,7 @@ class User(AbstractBaseUser):
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
-    # список имен полей, которые будут запрашиваться при 
+    # список имен полей, которые будут запрашиваться при
     # создании пользователя с помощью команды управления createsuperuser
 
     def __str__(self):
