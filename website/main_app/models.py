@@ -9,6 +9,7 @@ class Sport(models.Model):
     def __str__(self):
         return self.name
 
+
 class Active_game(models.Model):
     name = models.CharField(max_length=200)
     register_date = models.DateTimeField()
@@ -24,10 +25,18 @@ class Active_game(models.Model):
         return self.name
 
 
+class Year(models.Model):
+    name = models.CharField(max_length=10)
+
+    def __str__(self):
+        return self.name
+
+
 class Archive(models.Model):
     year =  models.DateTimeField()
     sport = models.CharField(max_length = 55)
     champion = models.CharField(max_length = 500)
+
 
 class Faculty(models.Model):
     faculty_name = models.CharField(max_length=50, null=True)
@@ -38,13 +47,14 @@ class Faculty(models.Model):
     class Meta:
         verbose_name_plural = "Faculties"
 
+
 class Participant(models.Model):
     name = models.CharField(max_length=30, blank=False, null=False)
     surname = models.CharField(max_length=30, blank=False, null=False)
     captain = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="Captain")
     phone = models.CharField(max_length=20, blank=True, null=True)
     student_number = models.CharField(max_length=20, blank=False, null=False)
-    year = models.CharField(max_length=1, blank=True, null=True)
+    year = models.ForeignKey(Year, blank=True, null=True, on_delete=models.PROTECT)
     sport_id = models.ForeignKey(Sport, on_delete=models.PROTECT, verbose_name="Sport type")
 
     def __str__(self):

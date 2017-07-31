@@ -1,7 +1,7 @@
 import datetime
 from django.shortcuts import render
-
-from django.views.generic.edit import CreateView
+from django.contrib.auth.decorators import login_required
+from django.forms.models import modelformset_factory
 
 from .models import Active_game
 from .forms import ParticipantForm
@@ -17,9 +17,18 @@ def show_active_game(request, id):
     context = {'game': game,'sports':sports}
     return render(request, 'show_active_game.html', context)
 
-class ParticipantCreate(CreateView):
-    form_class = ParticipantForm
-    template_name = "participant_form.html"
 
+@login_required
+def create_team(request):
+    ParticipantFormSet = modelformset_factory(Participant, form=ParticipantForm, extra=6, max_num=17)
 
+    if request.method == "POST":
+        formset = ParticipantFormSet(request.POST)
+
+        if formset.is_valid():
+            formset.save()
+    else:
+        formset = ParticipantFormSet()
+
+    return render(request, "participant_form.html", {"formset": formset})
 
